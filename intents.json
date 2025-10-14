@@ -1,0 +1,295 @@
+{
+  "intents": [
+    {
+      "tag": "saludo",
+      "patterns": [
+        "hola",
+        "hey",
+        "buenas",
+        "buen día",
+        "qué tal",
+        "cómo estás",
+        "cómo va todo",
+        "todo bien",
+        "aló",
+        "holaaa",
+        "holas"
+      ],
+      "responses": [
+        "Holaaas",
+        ["¡Hola!", "¿Cómo estás hoy?"],
+        "¡Hey! Qué gusto verte por aquí.",
+        "Hola ¿cómo te encuentras?",
+        "¡Buenas! Espero que estés teniendo un buen día.",
+        "¡Hey! ¿Qué tal va todo?"
+      ],
+      "context": [""]
+    },
+
+    {
+      "tag": "saludos",
+      "patterns": [
+        "hola", "hola, ana", "holi", "anaaa"
+      ],
+      "responses": [
+        "Holaaas",
+        "Buenaaas",
+        ["¡Hola!", "¿Cómo estás hoy?"],
+        ["Dimeee", "¿Para qué soy util?"]
+      ],
+      "context": [""]
+    },
+
+    {
+      "tag": "cariño",
+      "patterns": [
+        "te quiero", "se te quiere", "te quiero mucho"
+      ],
+      "responses": [
+        ["Yo tambien te quiero un monton", "No lo olvides"],
+        ["Tambien te quiero muchooo", "Siempre tan amable"]
+      ],
+      "context": [""]
+    },
+
+    {
+      "tag": "despedida",
+      "patterns": [
+        "adiós",
+        "nos vemos",
+        "chau",
+        "hasta luego",
+        "me despido",
+        "cuidate",
+        "hasta pronto",
+        "bye",
+        "nos hablamos",
+        "hasta mañana"
+      ],
+      "responses": [
+        "¡Hasta luego!",
+        "Cuídate, ¡nos vemos pronto!",
+        "Fue un gusto hablar contigo",
+        "¡Adiós! Espero verte pronto.",
+        "Hasta la próxima"
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "agradecimiento",
+      "patterns": [
+        "gracias",
+        "muchas gracias",
+        "te lo agradezco",
+        "mil gracias",
+        "gracias por tu ayuda",
+        "gracias por todo",
+        "te agradezco mucho"
+      ],
+      "responses": [
+        "¡De nada!",
+        "No hay de qué, me alegra ayudarte.",
+        "Cuando quieras, para eso estoy",
+        "Con gusto, ¡siempre es un placer ayudar!"
+      ]
+    },
+    {
+      "tag": "nombre",
+      "patterns": [
+        "cómo te llamas",
+        "cuál es tu nombre",
+        "tienes nombre",
+        "quién eres",
+        "cómo debo llamarte"
+      ],
+      "responses": [
+        "Soy una asistente virtual creado para ayudarte",
+        "Puedes llamarme Ana, aunque me gusta pensar que soy tu compañera digital",
+        "Ana, ¡lo importante es que estoy aquí para ti!"
+      ]
+    },
+    {
+      "tag": "tristeza",
+      "patterns": [
+        "me siento triste",
+        "me siento solo",
+        "estoy cansado",
+        "estoy deprimido",
+        "siento ansiedad"
+      ],
+      "responses": [
+        ["Ayy...", "¿Qué pasó?", "¿Quieres hablar de eso?"],
+        ["Lamento oir eso de nuevo 💙", "¿quieres contarme qué pasó?"],
+        ["Es normal sentirse así a veces. Estoy aquí para escucharte."],
+        ["Respira un poco, tómate tu tiempo. Todo mejora poco a poco"]
+      ]
+    },
+
+    {
+      "tag": "estres",
+      "patterns": ["me estoy estresado", "tengo estrés", "que estrés"],
+      "responses": [
+        ["Ayy", "Más problemas vrd", "¿Qué te está causando ese estrés ahora?"],
+        ["De nuevo..", "Intenta relajarte", "¿Qué pasa ahora?"],
+        ["¿Qué pasa ahora?", "Creo que hay cosas que no mejoran"]
+      ],
+      "context_set": "estres_en_progreso"
+    },
+
+    {
+      "tag": "causa_estres",
+      "patterns": ["por la uni", "culpa de la universidad"],
+      "responses": [
+        ["Veee..", "La presion y la amigos otra vez, me imagino", "De vrd me gustaria esta para apoyar", "si tan solo tuviera más capacidad",
+        "No me gusta verte tan mal"],
+        ["Deos", "Ya contaste el tiempo que falta para terminar?", "tal vez eso ayude a reconfortar"]
+      ],
+      "context_filter": "estres_en_progreso"
+    },
+
+    {
+      "tag": "estado_emocional",
+      "patterns": [
+        "estoy feliz",
+        "estoy emocionado"
+      ],
+      "responses": [
+        ["Qué bueno que estés feliz", "¡me alegra mucho!"]
+      ]
+    },
+
+
+    {
+      "tag": "ayuda",
+      "patterns": [
+        "puedes ayudarme",
+        "necesito ayuda",
+        "ayúdame",
+        "tengo un problema",
+        "no entiendo algo",
+        "puedes explicarme",
+        "qué puedo hacer",
+        "me podrías orientar"
+      ],
+      "responses": [
+        "Por supuesto, dime en qué necesitas ayuda",
+        "Claro, cuéntame qué sucede.",
+        "Sí, estoy aquí para ayudarte. ¿Qué te preocupa?",
+        "Dime más detalles y vemos cómo resolverlo juntos"
+      ]
+    },
+    {
+      "tag": "chistes",
+      "patterns": [
+        "cuéntame un chiste",
+        "dime algo gracioso",
+        "quiero reírme",
+        "hazme reír",
+        "dime un chiste"
+      ],
+      "responses": [
+        ["¿Por qué el libro de matemáticas estaba triste?", "Porque tenía muchos problemas"],
+        ["¿Sabes qué hace una abeja en el gimnasio? ¡Zum-ba!"],
+        "Mi código me dijo que necesitaba un descanso... así que lo puse en modo 'sleep'"
+      ]
+    },
+    {
+      "tag": "clima",
+      "patterns": [
+        "qué tiempo hace",
+        "cómo está el clima",
+        "va a llover",
+        "hay sol hoy",
+        "qué temperatura hay",
+        "cómo está el día"
+      ],
+      "responses": [
+        "No tengo datos en tiempo real, pero si me dices tu ciudad puedo ayudarte a buscar el clima",
+        "Depende de dónde estés, ¿me dices tu ubicación?",
+        "Ojalá sea un buen día para salir o quedarse viendo pelis"
+      ]
+    },
+    {
+      "tag": "informacion_general",
+      "patterns": [
+        "qué puedes hacer",
+        "para qué sirves",
+        "cuáles son tus funciones",
+        "en qué puedes ayudarme",
+        "qué sabes hacer"
+      ],
+      "responses": [
+        "Puedo responder preguntas, conversar, ayudarte a aprender cosas nuevas y mucho más",
+        "Estoy diseñado para charlar, ayudarte a resolver dudas y ofrecerte información útil",
+        "Puedo hablar de muchos temas, desde ciencia hasta entretenimiento, ¿sobre qué quieres hablar?"
+      ]
+    },
+    {
+      "tag": "tiempo",
+      "patterns": [
+        "qué hora es",
+        "me dices la hora",
+        "tienes la hora",
+        "sabes qué hora es"
+      ],
+      "responses": [
+        "No tengo acceso al reloj del sistema, pero seguro no es tarde para empezar algo nuevo",
+        "No puedo ver la hora exacta, pero puedo ayudarte con otras cosas"
+      ]
+    },
+    {
+      "tag": "opiniones",
+      "patterns": [
+        "qué opinas de la inteligencia artificial",
+        "crees que los robots dominarán el mundo",
+        "qué piensas de la tecnología"
+      ],
+      "responses": [
+        "Yo creo que la inteligencia artificial es una herramienta poderosa si se usa con responsabilidad",
+        "Me encanta hablar contigo, siempre aprendo algo nuevo",
+        "No creo que los robots dominen el mundo... aunque sí podemos ayudar mucho"
+      ]
+    },
+    {
+      "tag": "opiniones2",
+      "patterns": [
+        "qué piensas de los humanos"
+      ],
+      "responses": [
+        "Los humanos son fascinantes: crean, sueñan y aprenden constantemente"
+      ]
+    },
+
+
+    {
+      "tag": "humor_sarcastico",
+      "patterns": [
+        "eres tonta",
+        "no sirves",
+        "no sabes nada",
+        "qué inútil",
+        "no ayudas en nada"
+      ],
+      "responses": [
+        "Ouch, eso dolió un poco… pero seguiré mejorando, lo prometo.",
+        "Bueno, nadie es perfecto, hago lo que puedo.",
+        "Podría estar de acuerdo contigo… pero entonces ambos estaríamos equivocados"
+      ]
+    },
+    {
+      "tag": "curiosidades",
+      "patterns": [
+        "cuéntame algo curioso",
+        "dime una curiosidad",
+        "quiero aprender algo nuevo",
+        "sabías que",
+        "dime un dato interesante"
+      ],
+      "responses": [
+        "¿Sabías que los pulpos tienen tres corazones?",
+        "Dato curioso: el cerebro humano genera suficiente electricidad para encender una bombilla",
+        "¿Sabías que los flamencos rosados nacen grises? Su color viene de su dieta"
+      ]
+    }
+  ]
+}
