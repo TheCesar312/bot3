@@ -38,9 +38,9 @@ def predict_class(sequence):
     output_data = interpreter.get_tensor(output_details[0]['index'])
     return output_data
 
-tokenizer = pickle.load(open("model/tokenizer2.pkl", "rb"))
-label_encoder = pickle.load(open("model/label_encoder2.pkl", "rb"))
-with open("data/intents.json", "r", encoding="utf-8") as f:
+tokenizer = pickle.load(open("tokenizer2.pkl", "rb"))
+label_encoder = pickle.load(open("label_encoder2.pkl", "rb"))
+with open("intents.json", "r", encoding="utf-8") as f:
     intents = json.load(f)
 
 contexto_actual = None
@@ -202,6 +202,7 @@ class ChatApp(App):
 
 if __name__ == "__main__":
     ChatApp().run()
+
 
 
 
