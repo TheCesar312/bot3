@@ -22,10 +22,10 @@ from kivy.graphics import Color, RoundedRectangle
 Window.clearcolor = (0.03, 0.03, 0.05, 1)
 
 # --- Cargar modelo y datos ---
-model = load_model("model/chatbot_model2.h5")
-tokenizer = pickle.load(open("model/tokenizer2.pkl", "rb"))
-label_encoder = pickle.load(open("model/label_encoder2.pkl", "rb"))
-with open("data/intents.json", "r", encoding="utf-8") as f:
+model = load_model("chatbot_model2.h5")
+tokenizer = pickle.load(open("tokenizer2.pkl", "rb"))
+label_encoder = pickle.load(open("label_encoder2.pkl", "rb"))
+with open("intents.json", "r", encoding="utf-8") as f:
     intents = json.load(f)
 
 contexto_actual = None
@@ -181,3 +181,4 @@ class ChatApp(App):
 
 if __name__ == "__main__":
     ChatApp().run()
+
