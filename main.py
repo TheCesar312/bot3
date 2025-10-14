@@ -3,6 +3,7 @@ import random
 import time
 import pickle
 import numpy as np
+import tflite_runtime.interpreter as tf  # ✅ reemplaza TensorFlow
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
@@ -22,10 +23,24 @@ from kivy.graphics import Color, RoundedRectangle
 Window.clearcolor = (0.03, 0.03, 0.05, 1)
 
 # --- Cargar modelo y datos ---
-model = load_model("chatbot_model2.h5")
-tokenizer = pickle.load(open("tokenizer2.pkl", "rb"))
-label_encoder = pickle.load(open("label_encoder2.pkl", "rb"))
-with open("intents.json", "r", encoding="utf-8") as f:
+# Cargar modelo TFLite
+interpreter = tf.lite.Interpreter(model_path="model_flex.tflite")
+interpreter.allocate_tensors()
+
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+def predict_class(sequence):
+    # Convierte a float32 y agrega batch dimension
+    input_data = np.array(sequence, dtype=np.float32)
+    interpreter.set_tensor(input_details[0]['index'], input_data)
+    interpreter.invoke()
+    output_data = interpreter.get_tensor(output_details[0]['index'])
+    return output_data
+
+tokenizer = pickle.load(open("model/tokenizer2.pkl", "rb"))
+label_encoder = pickle.load(open("model/label_encoder2.pkl", "rb"))
+with open("data/intents.json", "r", encoding="utf-8") as f:
     intents = json.load(f)
 
 contexto_actual = None
@@ -36,8 +51,14 @@ def responder(texto):
     global contexto_actual
     texto = texto.lower().strip()
     seq = tokenizer.texts_to_sequences([texto])
-    padded = pad_sequences(seq, maxlen=model.input_shape[1], padding="post")
-    pred = model.predict(padded)[0]
+    max_len = input_details[0]['shape'][1]  # obtiene el tamaño esperado por el modelo
+    padded = pad_sequences(seq, maxlen=max_len, padding="post")
+
+    # Convertir a float32 para TFLite
+    padded = np.array(padded, dtype=np.float32)
+
+    # Obtener predicción del modelo TFLite
+    pred = predict_class(padded)
     tag = label_encoder.inverse_transform([np.argmax(pred)])[0]
 
     if np.max(pred) < 0.3:
@@ -181,4 +202,6 @@ class ChatApp(App):
 
 if __name__ == "__main__":
     ChatApp().run()
+
+
 
